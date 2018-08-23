@@ -1,0 +1,9 @@
+resources:
+  - name: concourse-examples
+    type: git
+    source:
+      uri: https://github.com/ranjithgampa/concourse-examples.git
+      branch: master
+      username: {{github-username}}
+      password: {{github-password}}
+ 
