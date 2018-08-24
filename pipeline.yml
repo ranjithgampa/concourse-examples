@@ -4,6 +4,27 @@ resources:
     source:
       uri: https://github.com/ranjithgampa/concourse-examples.git
       branch: master
-      username: {{github-username}}
-      password: {{github-password}}
- 
+      username: ((github-username))
+      password: ((github-password))
+      
+jobs:
+- name: parameter-test
+  plan:
+  - get: concourse-examples
+  - task: inline-parameter-test
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: busybox}
+      run:
+        path: env
+        args: []
+      run:
+        path: ls
+        args: []
+      params:
+        CAT_NAME: ((github-username))
+        DOG_NAME: ((github-password))      
+  - task: file-parameter-test
+    file: concourse-examples/tasks/parameter-test.yml
