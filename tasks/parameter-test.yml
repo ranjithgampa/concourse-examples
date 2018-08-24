@@ -7,4 +7,5 @@ run:
   args: []
 params:
   CAT_NAME: ((github-username))
-  DOG_NAME: ((github-password))  
+  DOG_NAME: ((github-password)) 
+  LINUX_REPOSITORY: ((LINUX_REPOSITORY))
