@@ -17,13 +17,14 @@ jobs:
       platform: linux
       image_resource:
         type: docker-image
-        source: {repository: busybox}
+        source: {repository: ((LINUX_REPOSITORY))}
       run:
         path: env
         args: []
       params:
         CAT_NAME: ((github-username))
         DOG_NAME: ((github-password))  
+        LINUX_REPOSITORY: ((LINUX_REPOSITORY))
 - name: file-parameter-test
   serial_groups: [build-group-1]
   plan:
