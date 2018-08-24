@@ -3,7 +3,7 @@ image_resource:
   type: docker-image
   source: {repository: ((LINUX_REPOSITORY))}
 run:
-  path: env
+  path: ls
   args: []
 params:
   CAT_NAME: ((github-username))
