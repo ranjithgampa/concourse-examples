@@ -9,6 +9,7 @@ resources:
       
 jobs:
 - name: parameter-test
+  serial_groups: [build-group-1]
   plan:
   - get: concourse-examples
   - task: inline-parameter-test
@@ -20,11 +21,16 @@ jobs:
       run:
         path: env
         args: []
-      run:
-        path: ls
-        args: []
       params:
         CAT_NAME: ((github-username))
-        DOG_NAME: ((github-password))      
+        DOG_NAME: ((github-password))  
+- name: file-parameter-test
+  serial_groups: [build-group-1]
+  plan:
+  - get: concourse-examples
   - task: file-parameter-test
     file: concourse-examples/tasks/parameter-test.yml
+    params:
+        CAT_NAME: ((github-username))
+        DOG_NAME: ((github-password))    
+        LINUX_REPOSITORY: busybox
