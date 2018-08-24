@@ -1,7 +1,7 @@
 platform: linux
 image_resource:
   type: docker-image
-  source: {repository: ((LINUX_REPOSITORY))}
+  source: {repository: ((CAT_NAME))}
 run:
   path: ls
   args: []
